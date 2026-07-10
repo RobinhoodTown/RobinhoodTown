@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  agentos:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - AGENTOS_LOG_LEVEL=info
+      - AGENTOS_DB_URL=sqlite:///data/agentos.db
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - agentos_data:/app/data
+    restart: unless-stopped
+    depends_on:
+      - redis
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+volumes:
+  agentos_data:
+  redis_data:
