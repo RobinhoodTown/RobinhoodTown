@@ -18,3 +18,4 @@ class BrowserTool(BaseTool):
                                   metadata={"url": url, "status": r.status_code})
         except Exception as exc:
             return ToolResult(success=False, output=None, error=str(exc))
+
