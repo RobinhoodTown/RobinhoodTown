@@ -28,3 +28,4 @@ async def test_context_window_respects_limit(memory):
         await memory.add(f"context chunk {i} " + "word " * 20)
     ctx = memory.context_window(max_tokens=50)
     assert len(ctx.split()) <= 60
+
