@@ -37,3 +37,4 @@ class Config:
         return cls(**{k: v for k, v in data.items() if hasattr(cls, k)})
 
 
+
